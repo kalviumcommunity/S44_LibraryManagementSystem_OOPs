@@ -57,6 +57,20 @@ public:
     }
 };
 
+// Encapsulation and Abstraction
+class Patron {
+private:
+    std::string name;
+    std::string patronId;
+
+public:
+    Patron(const std::string& name, const std::string& patronId) : name(name), patronId(patronId) {}
+
+    void display() const {
+        std::cout << "Patron: " << name << " (ID: " << patronId << ")" << std::endl;
+    }
+};
+
 // Main Function
 int main() {
 
