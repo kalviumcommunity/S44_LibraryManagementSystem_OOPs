@@ -24,6 +24,39 @@ public:
     virtual ~ILoanable() {}
 };
 
+// Inheritance, Implementing Interface
+class Book : public LibraryItem, public ILoanable {
+private:
+    bool loaned;
+
+public:
+    Book(const std::string& title, const std::string& id) : LibraryItem(title, id), loaned(false) {}
+
+    void display() const override {
+        std::cout << "Book: " << title << " (ID: " << id << ")" << (loaned ? " [Loaned]" : " [Available]") << std::endl;
+    }
+
+    void loanItem() override {
+        if (!loaned) {
+            loaned = true;
+        } else {
+            std::cout << "Book is already loaned." << std::endl;
+        }
+    }
+
+    void returnItem() override {
+        if (loaned) {
+            loaned = false;
+        } else {
+            std::cout << "Book was not loaned." << std::endl;
+        }
+    }
+
+    bool isLoaned() const override {
+        return loaned;
+    }
+};
+
 // Main Function
 int main() {
 
