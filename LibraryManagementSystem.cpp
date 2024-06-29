@@ -107,6 +107,22 @@ public:
 
 // Main Function
 int main() {
+    Book book1("1984", "B001");
+    Book book2("To Kill a Mockingbird", "B002");
+    Patron patron1("John Doe", "P001");
+
+    LoanManager<Book> bookLoanManager;
+
+    book1.display();
+    book2.display();
+    patron1.display();
+
+    bookLoanManager.loanItem(&book1);
+    bookLoanManager.loanItem(&book2);
+    bookLoanManager.displayLoanedItems();
+
+    bookLoanManager.returnItem(&book1);
+    bookLoanManager.displayLoanedItems();
 
     return 0;
 }
