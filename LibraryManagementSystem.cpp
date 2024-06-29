@@ -15,6 +15,15 @@ public:
     virtual ~LibraryItem() {}
 };
 
+// Interface
+class ILoanable {
+public:
+    virtual void loanItem() = 0;
+    virtual void returnItem() = 0;
+    virtual bool isLoaned() const = 0;
+    virtual ~ILoanable() {}
+};
+
 // Main Function
 int main() {
 
