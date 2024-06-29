@@ -71,6 +71,40 @@ public:
     }
 };
 
+// Templates, SOLID Principles (Single Responsibility Principle, Open-Closed Principle)
+template <typename T>
+class LoanManager {
+private:
+    std::vector<T*> loanedItems;
+
+public:
+    void loanItem(T* item) {
+        if (!item->isLoaned()) {
+            item->loanItem();
+            loanedItems.push_back(item);
+        } else {
+            std::cout << "Item is already loaned." << std::endl;
+        }
+    }
+
+    void returnItem(T* item) {
+        auto it = std::find(loanedItems.begin(), loanedItems.end(), item);
+        if (it != loanedItems.end()) {
+            item->returnItem();
+            loanedItems.erase(it);
+        } else {
+            std::cout << "Item was not loaned." << std::endl;
+        }
+    }
+
+    void displayLoanedItems() const {
+        std::cout << "Loaned Items:" << std::endl;
+        for (const auto& item : loanedItems) {
+            item->display();
+        }
+    }
+};
+
 // Main Function
 int main() {
 
